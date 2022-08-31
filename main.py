@@ -2,6 +2,7 @@
 from dato import *
 from datos import *
 from generar import *
+from redesNeuronalesActual import *
 
 
 def prueba(cantidad):
@@ -11,27 +12,13 @@ def prueba(cantidad):
         print(f'[{i}] : {item}')
         i += 1
 
-# Prueba comparar
+def preparandoRed():
+    sexoEdadAñosReprobados()
 
-"""
-def prueba3():
-    p1 = Dato()
-    p2 = Dato()
-    print(f'DATO P1: {p1.__dict__}')
-    print(f'DATO P1: {p2.__dict__}')
-
-    if p1 == p2:
-        print("P1 y P2 Son iguales")
-    else:
-        print("P1 y P2 son diferentes")
-
-    if p1 == p1:
-        print("P1 y P1 Son iguales")
-    else:
-        print("P1 y P1 son diferentes")"""
 
 
 if __name__ == "__main__":
+    preparandoRed() 
     print("-"*50)
 
     print("Generar Conjunto de datos. ")
