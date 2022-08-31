@@ -22,15 +22,15 @@ def generarDato():
     apellido2 = random.choice(datos_Nombres.apellidos)
 
     
-    return {'nombre': nombre+" "+apellido1+" "+apellido2,
-            'sexo': sexo,
+    return {'nombre': nombre+" "+apellido1+" "+apellido2,   #[sexo,departamento,añosReprobados]
+            'sexo': sexo,    #0 hombre, 1 Mujer
             'edad': edad,
-            "departamento": departamento,
+            "departamento": departamento, 
             "municipio": municipio,
             "grados_Academico": grados,
             "anos_Estudio":anos_Estudio,
             "desercion":desercion,
-            "anos_Reprobados":reprobados}
+            "anos_Reprobados":reprobados} #0-11
             
 
 
