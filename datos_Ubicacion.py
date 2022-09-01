@@ -37,6 +37,39 @@ Vichada=["Cumaribo","La Primavera","Puerto Carreño","Santa Rosalía"]
 departamentos={"Antioquia" :Antioquia,"Amazonas":Amazonas,"Arauca":Arauca,"Atlántico":Atlantico,"Bolívar":Bolivar,"Boyacá":Boyaca,"Caldas":Caldas,"Caquetá":Caqueta,"Casanare":Casanare,"Cauca":Cauca,"Cesar":Cesar,"Chocó":Choco,"Córdoba":Cordoba,"Cundinamarca":Cundinamarca,"Guainía":Guainia,"Guaviare":Guaviare,"Huila":Huila,"La Guajira":La_Guajira,"Magdalena":Magdalena,"Meta":Meta,"Nariño":Narino,"Norte de Santander":Norte_de_Santander,"Putumayo":Putumayo,"Quindío":Quindio,"Risaralda":Risaralda,"San Andrés,Providencia y Santa Catalina":San_Andres_Providencia_y_Santa_Catalina,"Santander":Santander,"Sucre":Sucre,"Tolima":Tolima,"Valle del Cauca":Valle_del_Cauca,"Vaupés":Vaupes,"Vichada":Vichada }
 
 
+#Departamentos con mejor estudio según #https://www.semana.com/educacion/articulo/los-mejores-en-educacion-en-colombia-segun-el-consejo-privado-de-competitividad/604723/#:~:text=En%20el%20%C3%BAltimo%20%C3%8Dndice%20Departamental,en%20educaci%C3%B3n%20b%C3%A1sica%20y%20media.
+# 1  Santander   
+# 2  Boyacá   
+# 3  Casanare  
+# 4  Cundinamarca 
+# 5  Huila       
+# 6  Sucre      
+# 7  Norte de Santander   
+# 8  Caldas         
+# 9  Tolima     
+# 10 Meta       
+# 11 Risaralda    
+# 12 Cesar        
+# 13 Quindío         
+# 14 Atlántico        
+# 15 Córdoba         
+# 16 Arauca         
+# 17 Cauca        
+# 18 Antioquia          
+# 19 Nariño       
+# 20 Bolívar        
+# 21 Valle del Cauca   
+# 22 Magdalena      
+# 23 Putumayo          
+# 24 Caquetá         
+# 25 Chocó           
+# 26 La Guajira      
+# 27 Amazonas      
+# 28 Guanía        
+# 29 Guaviare     
+# 30 Vichada       
+# 31 Vaupés
+# 32 San Andrés,Providencia y Santa Catalina
 
 
 
