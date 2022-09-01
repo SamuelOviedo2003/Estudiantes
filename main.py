@@ -11,16 +11,17 @@ def prueba(cantidad):
     for item in muestra:
         print(f'[{i}] : {item}')
         i += 1
-
-def preparandoRed():
-    sexoEdadAñosReprobados()
+    ordenado=ordenandoDatosNecesarios(muestra)
+    entrenandoMaquina(ordenado)
 
 
 
 if __name__ == "__main__":
-    preparandoRed() 
     print("-"*50)
 
     print("Generar Conjunto de datos. ")
     prueba(int(input("Cantidad de datos a generar? ")))
     print("-"*50)
+    
+
+
