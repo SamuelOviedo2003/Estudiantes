@@ -1,6 +1,7 @@
 import numpy as np
-from keras.models import Sequential
-from keras.layers.core import Dense
+from keras.models import *
+from keras.layers.core import *
+import CojuntoDePrueba as cp
 
 
 #Aqui lo que llevo basicamente hice una red neuronal ya entrenada de 3 entradas: [sexo,Departamento,AñosReprobado]
@@ -97,14 +98,16 @@ def ordenandoDatosNecesarios(arreglo):
         arregloListo.append(arr1)
     return (arregloListo)
 
+cp1 = cp.AllRandom(24)
+
 def entrenandoMaquina(datos):
-    datosPracticaEntrada=np.array([[1,7,10],[0,32,0],[0,1,0],[1,10,11],[1,23,5],[0,13,9],[1,31,9],[0,25,3]],"float32") 
+    datosPracticaEntrada=np.array(cp1,"float32") 
     #hombre(0)-mujer(1)   ,departamento(1-32), añosReprobados(0-11)
-    datosPracticaSalida=np.array([[0.95],[0.1],[0.05],[1],[0.5],[0.7],[0.8],[0.4]], "float32")
+    datosPracticaSalida=np.array(cp.DatosPruebaRed(cp1), "float32")
     
     n_entrada=len(datosPracticaEntrada[0]) #entran 3 datos 
     n_salida=1              #sale 1 dato
-    n_nodos=100
+    n_nodos=32
 
     model=Sequential()
     model.add(Dense(n_nodos, input_dim=n_entrada, activation="relu"))
@@ -112,8 +115,8 @@ def entrenandoMaquina(datos):
 
     model.compile(loss='mean_squared_error',
                     optimizer='adam',
-                    metrics=['binary_accuracy'])
-    model.fit(datosPracticaEntrada, datosPracticaSalida, epochs=2000, verbose=0)
+                    metrics=['categorical_accuracy'])
+    model.fit(datosPracticaEntrada, datosPracticaSalida, epochs=1000, verbose=0)
     print("Modelo entrenado")
     scores = model.evaluate(datosPracticaEntrada, datosPracticaSalida, verbose=0)
     print(f'Metrica del modelo: {model.metrics_names[1]}, con un valor de: {scores[1]*100}')
