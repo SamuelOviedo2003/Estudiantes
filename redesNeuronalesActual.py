@@ -1,27 +1,28 @@
 import numpy as np
 from keras.models import *
 from keras.layers.core import *
-import CojuntoDePrueba as cp
+import conjunto_de_prueba as cp
 
 
-#Aqui lo que llevo basicamente hice una red neuronal ya entrenada de 3 entradas: [sexo,Departamento,AñosReprobado]
+# Aqui lo que llevo basicamente hice una red neuronal ya entrenada de 3 entradas: [sexo,Departamento,AñosReprobado]
 # -->Sexo(se representa con 0->hombre, 1->mujer)
 # -->Departamento (se representa entre 1 y 32)
 # -->Años reprobados( se representa entre 1 y 11)
-#Y hay una salida el cual es como el porcentaje (en decimales) de deserción
+# Y hay una salida el cual es como el porcentaje (en decimales) de deserción
 
-#El porcentaje de veracidad de la red neuronal es apenas 12.5%, no he podido aumentar ese porcentaje de fiabilidad
+# El porcentaje de veracidad de la red neuronal es apenas 12.5%, no he podido aumentar ese porcentaje de fiabilidad
 
 
 def ordenandoDatosNecesarios(arreglo):
-    arregloListo=[]
+    arregloListoCompleto = []
+    arregloListoDesertores = []
     for i in arreglo:
-        arr1=[]
-        if i["sexo"]=="Masculino":
+        arr1 = []
+        if i["sexo"] == "Masculino":
             arr1.append(0)
-        elif i["sexo"] =="Femenino":
+        elif i["sexo"] == "Femenino":
             arr1.append(1)
-        #________________________________________________________________
+        # ________________________________________________________________
         if i["departamento"] == "Santander":
             arr1.append(1)
         elif i["departamento"] == "Boyacá":
@@ -88,51 +89,82 @@ def ordenandoDatosNecesarios(arreglo):
             arr1.append(32)
         else:
             arr1.append(0000)
-        
-            
-        #_______________________________________________________________
-        
-        arr1.append(i["anos_Reprobados"])
-        
-        #__________________________________________________________
-        arregloListo.append(arr1)
-    return (arregloListo)
+
+        # _______________________________________________________________
+        if i["desercion"] == 0:
+            arr1.append(i["anos_Reprobados"])
+            arregloListoCompleto.append(arr1)
+        elif i["desercion"] != 0:
+            arr1.append(i["anos_Reprobados"])
+            arregloListoDesertores.append(arr1)
+        # __________________________________________________________
+
+    return ([arregloListoCompleto, arregloListoDesertores])
+
 
 cp1 = cp.AllRandom(24)
 
-def entrenandoMaquina(datos):
-    datosPracticaEntrada=np.array(cp1,"float32") 
-    #hombre(0)-mujer(1)   ,departamento(1-32), añosReprobados(0-11)
-    datosPracticaSalida=np.array(cp.DatosPruebaRed(cp1), "float32")
-    
-    n_entrada=len(datosPracticaEntrada[0]) #entran 3 datos 
-    n_salida=1              #sale 1 dato
-    n_nodos=32
 
-    model=Sequential()
+def entrenandoMaquinaCompleto(datos):
+    datosPracticaEntrada = np.array(cp1, "float32")
+    #hombre(0)-mujer(1)   ,departamento(1-32), añosReprobados(0-11)
+    datosPracticaSalida = np.array(cp.DatosPruebaRedCompleto(cp1), "float32")
+
+    n_entrada = len(datosPracticaEntrada[0])  # entran 3 datos
+    n_salida = 1  # sale 1 dato
+    n_nodos = 32
+
+    model = Sequential()
     model.add(Dense(n_nodos, input_dim=n_entrada, activation="relu"))
     model.add(Dense(n_salida, activation="sigmoid"))
 
     model.compile(loss='mean_squared_error',
                     optimizer='adam',
                     metrics=['categorical_accuracy'])
-    model.fit(datosPracticaEntrada, datosPracticaSalida, epochs=1000, verbose=0)
+    model.fit(datosPracticaEntrada, datosPracticaSalida,
+                epochs=1000, verbose=0)
     print("Modelo entrenado")
-    scores = model.evaluate(datosPracticaEntrada, datosPracticaSalida, verbose=0)
-    print(f'Metrica del modelo: {model.metrics_names[1]}, con un valor de: {scores[1]*100}')
-    
-    
-    
+    scores = model.evaluate(datosPracticaEntrada,
+                            datosPracticaSalida, verbose=0)
+    print(
+        f'Metrica del modelo: {model.metrics_names[1]}, con un valor de: {scores[1]*100}')
 
-    
-    resultado=model.predict(datos, verbose=0)
+    resultado = model.predict(datos, verbose=0)
     model.summary()
-    
-    print("Ha sido exitoso el proceso de resultado")
-    
-    for i in range(0,len(datos),1):
-        print(datos[i],"->",resultado[i])
+
+    print("Calculando el porcentaje de estudiantes que se graduen de eduación superior")
+    for i in range(0, len(datos), 1):
+        print(datos[i], "->", resultado[i])
 
 
+def entrenandoMaquinaDesertores(datos):
+    datosPracticaEntrada = np.array(cp1, "float32")
+    #hombre(0)-mujer(1)   ,departamento(1-32), añoQueDeserto(0-11)
+    datosPracticaSalida = np.array(cp.DatosPruebaRedDesertaron(cp1), "float32")
 
+    n_entrada = len(datosPracticaEntrada[0])  # entran 3 datos
+    n_salida = 1  # sale 1 dato
+    n_nodos = 32
 
+    model = Sequential()
+    model.add(Dense(n_nodos, input_dim=n_entrada, activation="relu"))
+    model.add(Dense(n_salida, activation="sigmoid"))
+
+    model.compile(loss='mean_squared_error',
+                    optimizer='adam',
+                    metrics=['categorical_accuracy'])
+    model.fit(datosPracticaEntrada, datosPracticaSalida,
+                epochs=1000, verbose=0)
+    print("Modelo entrenado")
+    scores = model.evaluate(datosPracticaEntrada,
+                            datosPracticaSalida, verbose=0)
+    print(
+        f'Metrica del modelo: {model.metrics_names[1]}, con un valor de: {scores[1]*100}')
+
+    resultado = model.predict(datos, verbose=0)
+    model.summary()
+
+    print("Calculando el porcentaje de estudiantes desertores que vuelvan al colegio")
+
+    for i in range(0, len(datos), 1):
+        print(datos[i], "->", resultado[i])
