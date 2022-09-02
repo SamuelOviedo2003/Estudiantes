@@ -1,4 +1,5 @@
 
+
 from dato import *
 from datos import *
 from generar import *
@@ -12,13 +13,19 @@ def prueba(cantidad):
         print(f'[{i}] : {item}')
         i += 1
     ordenado=ordenandoDatosNecesarios(muestra)
-    entrenandoMaquina(ordenado)
+    ordenadoCompleto=ordenado[0]
+    ordenadoDesertor=ordenado[1]
+    
+    #Aqui calcula el porcentaje de cada estudiante que se graduen de la universidad, (solo están los estudiantes que se graduaron)
+    entrenandoMaquinaCompleto(ordenadoCompleto)
+    
+    #Aqui calcula el porcentaje de cada estudiante que vuelva al colegio, (solo están los estudiantes que desertaron)
+    entrenandoMaquinaDesertores(ordenadoDesertor)
 
 
 
 if __name__ == "__main__":
     print("-"*50)
-
     print("Generar Conjunto de datos. ")
     prueba(int(input("Cantidad de datos a generar? ")))
     print("-"*50)
