@@ -17,7 +17,7 @@ def AllRandom(cant: int):
 
 #Valor normalizado = (Valor - Característica mínima)/(Característica máxima - Característica mínima)
 
-def DatosPruebaRed(lista2):
+def DatosPruebaRedCompleto(lista2):
     decF = []
     for i in range(len(lista2)):
         dec = [((lista2[i][2]+lista2[i][1]+lista2[i][0])*2.27)/100]
@@ -25,3 +25,10 @@ def DatosPruebaRed(lista2):
         
     #print (decF)
     return decF
+
+def DatosPruebaRedDesertaron(lista2):
+    decF=[]
+    for i in range(len(lista2)):
+        dec=[((lista2[i][2]+lista2[i][1]+lista2[i][0])*1.27)/100] #formula de los que desertaron (nose cual formula)
+        decF.append(dec)
+    return decF 
