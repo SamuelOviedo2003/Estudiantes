@@ -11,8 +11,8 @@ def generarDato():
     else:
         nombre = random.choice(datos_Nombres.nombreMujer)
     reprobados= gega.reprobados()    
-    actuales=gega.anos_Cursados()   
-    edad = gega.edad(reprobados,actuales)
+    desercion=gega.desercion()   
+    edad = gega.edad(reprobados,desercion)
     grados=gega.grados(edad, reprobados)
     anos_Estudio=gega.anos_Estudio(edad)
     departamento = random.choice(list(datos_Ubicacion.departamentos.keys()))
@@ -22,25 +22,15 @@ def generarDato():
     apellido2 = random.choice(datos_Nombres.apellidos)
 
     
-    return {'nombre': nombre+" "+apellido1+" "+apellido2,
-            'sexo': sexo,
+    return {'nombre': nombre+" "+apellido1+" "+apellido2,   #[sexo,departamento,añosReprobados]
+            'sexo': sexo,    #0 hombre, 1 Mujer
             'edad': edad,
             "departamento": departamento,
             "municipio": municipio,
             "grados_Academico": grados,
             "anos_Estudio":anos_Estudio,
-            "anos_Actual":actuales,
-            "anos_Reprobados":reprobados}
-            
-
-
-def generarDatos(cantidad):
-    muestra = []
-    if cantidad > 0:
-        for item in range(cantidad):
-            muestra.append(generarDato())
-    return muestra
-
+            "desercion":desercion,
+            "anos_Reprobados":reprobados} #0-11
             
 
 
