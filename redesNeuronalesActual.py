@@ -10,7 +10,6 @@ import conjunto_de_prueba as cp
 # -->Años reprobados( se representa entre 1 y 11)
 # Y hay una salida el cual es como el porcentaje (en decimales) de deserción
 
-# El porcentaje de veracidad de la red neuronal es apenas 12.5%, no he podido aumentar ese porcentaje de fiabilidad
 
 
 def ordenandoDatosNecesarios(arreglo):
@@ -95,7 +94,7 @@ def ordenandoDatosNecesarios(arreglo):
             arr1.append(i["anos_Reprobados"])
             arregloListoCompleto.append(arr1)
         elif i["desercion"] != 0:
-            arr1.append(i["anos_Reprobados"])
+            arr1.append(i["desercion"])
             arregloListoDesertores.append(arr1)
         # __________________________________________________________
 
@@ -134,7 +133,7 @@ def entrenandoMaquinaCompleto(datos):
 
     print("Calculando el porcentaje de estudiantes que se graduen de eduación superior")
     for i in range(0, len(datos), 1):
-        print(datos[i], "->", resultado[i])
+        print(datos[i], "->", resultado[1-i])
 
 
 def entrenandoMaquinaDesertores(datos):
