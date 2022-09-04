@@ -1,5 +1,4 @@
 
-
 from dato import *
 from datos import *
 from generar import *
