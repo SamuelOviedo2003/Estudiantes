@@ -1,10 +1,9 @@
 from dato import *
 
-def anadirDatos(n):
+def anadirDatos(muestra):
   lista = []
-  if n>0:
-    for i in range(n):
-      lista.append(Dato())
+  ObjetoDato = Dato(muestra)
+  print(ObjetoDato.__str__())
+  lista.append(ObjetoDato.__str__())
   return lista
 
-  

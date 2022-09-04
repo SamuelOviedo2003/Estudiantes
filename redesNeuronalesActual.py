@@ -10,6 +10,7 @@ import conjunto_de_prueba as cp
 # -->Años reprobados( se representa entre 1 y 11)
 # Y hay una salida el cual es como el porcentaje (en decimales) de deserción
 
+# El porcentaje de veracidad de la red neuronal es apenas 12.5%, no he podido aumentar ese porcentaje de fiabilidad
 
 
 def ordenandoDatosNecesarios(arreglo):
@@ -88,23 +89,21 @@ def ordenandoDatosNecesarios(arreglo):
             arr1.append(32)
         else:
             arr1.append(0000)
-
+        
         # _______________________________________________________________
         if i["desercion"] == 0:
             arr1.append(i["anos_Reprobados"])
             arregloListoCompleto.append(arr1)
         elif i["desercion"] != 0:
-            arr1.append(i["desercion"])
+            arr1.append(i["anos_Reprobados"])
             arregloListoDesertores.append(arr1)
         # __________________________________________________________
-
     return ([arregloListoCompleto, arregloListoDesertores])
 
 
-cp1 = cp.AllRandom(24)
-
 
 def entrenandoMaquinaCompleto(datos):
+    cp1 = cp.AllRandom(24)
     datosPracticaEntrada = np.array(cp1, "float32")
     #hombre(0)-mujer(1)   ,departamento(1-32), añosReprobados(0-11)
     datosPracticaSalida = np.array(cp.DatosPruebaRedCompleto(cp1), "float32")
@@ -133,10 +132,12 @@ def entrenandoMaquinaCompleto(datos):
 
     print("Calculando el porcentaje de estudiantes que se graduen de eduación superior")
     for i in range(0, len(datos), 1):
-        print(datos[i], "->", resultado[1-i])
-
+        print(datos[i], "->", resultado[i])
+    return resultado
+# Como adicion le puse que me retornara el resultado de los porcentajes, para ambos codigos 
 
 def entrenandoMaquinaDesertores(datos):
+    cp1 = cp.AllRandom(24)
     datosPracticaEntrada = np.array(cp1, "float32")
     #hombre(0)-mujer(1)   ,departamento(1-32), añoQueDeserto(0-11)
     datosPracticaSalida = np.array(cp.DatosPruebaRedDesertaron(cp1), "float32")
@@ -167,3 +168,4 @@ def entrenandoMaquinaDesertores(datos):
 
     for i in range(0, len(datos), 1):
         print(datos[i], "->", resultado[i])
+    return resultado

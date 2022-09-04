@@ -1,4 +1,5 @@
 
+
 from dato import *
 from datos import *
 from generar import *
@@ -15,6 +16,7 @@ def prueba(cantidad):
     ordenadoCompleto=ordenado[0]
     ordenadoDesertor=ordenado[1]
     
+    
     #Aqui calcula el porcentaje de cada estudiante que se graduen de la universidad, (solo están los estudiantes que se graduaron)
     entrenandoMaquinaCompleto(ordenadoCompleto)
     
@@ -28,6 +30,6 @@ if __name__ == "__main__":
     print("Generar Conjunto de datos. ")
     prueba(int(input("Cantidad de datos a generar? ")))
     print("-"*50)
-    
+
 
 

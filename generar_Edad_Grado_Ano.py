@@ -1,21 +1,20 @@
-
-
 import random
+# probabilidad de 5 % de ser desertor,aparte nos genera en que grado academico abandono
 
-# probabilidad de 30 % de ser desertor,aparte nos genera en que grado academico abandono
+
 def desercion():
     num = random.randint(1, 100)
     desercion = 0
-    if num in (1, 2, 3, 4, 5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30):
+    if num in (1, 2, 3, 4, 5):
         desercion = random.randint(0, 11)
     return desercion
+# probabilidad de 10% de perder una materia ,aparte nos genera cuantos años reprobo
 
 
-# probabilidad de 35% de perder una materia ,aparte nos genera cuantos años reprobo
 def reprobados():
     num = random.randint(1, 100)
     reprobados = 0
-    if num in (1, 2, 3, 4, 5, 6, 7, 8, 9, 10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35):
+    if num in (1, 2, 3, 4, 5, 6, 7, 8, 9, 10):
         reprobados = random.randint(1, 11)
     return reprobados
 # a la edad en el mejor de los casos se le suman los grados reprobados, si hay desercion este predomina sobre los años reprobados 
@@ -57,4 +56,3 @@ def grados(edad_list, reprobados):
         for i in range(1, len(edad_list)+1):
             anos.append(str(i)+"°")
     return anos
-
