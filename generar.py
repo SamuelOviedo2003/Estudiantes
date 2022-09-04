@@ -46,9 +46,4 @@ def generarDatos(cantidad):
 
 
 
-def generarDatos(cantidad):
-    muestra = []
-    if cantidad > 0:
-        for item in range(cantidad):
-            muestra.append(generarDato())
-    return muestra
+
