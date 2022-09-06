@@ -3,6 +3,7 @@ import datos_Nombres
 import datos_Ubicacion
 import generar_Edad_Grado_Ano as gega
 
+
 def generarDato():
     sexo = random.choice(['Masculino', 'Femenino'])
     if sexo == 'Masculino':
@@ -20,7 +21,6 @@ def generarDato():
     apellido1 = random.choice(datos_Nombres.apellidos)
     apellido2 = random.choice(datos_Nombres.apellidos)
 
-
     
     return {'nombre': nombre+" "+apellido1+" "+apellido2,   #[sexo,departamento,añosReprobados]
             'sexo': sexo,    #0 hombre, 1 Mujer
@@ -33,7 +33,6 @@ def generarDato():
             "anos_Reprobados":reprobados,
             "porcentaje":0} #0-11
             
-            
 
 
 def generarDatos(cantidad):
@@ -42,7 +41,6 @@ def generarDatos(cantidad):
         for item in range(cantidad):
             muestra.append(generarDato())
     return muestra
-
 
 
 
