@@ -15,12 +15,16 @@ def inginieria_inversa(muestra, resultado):
     i = 0
     lista_final = []
     
-    print(len(muestra))
-    print(len(resultado))
     
     for item in muestra:
-        item["porcentaje"] = resultado[i][0]
-        i += 1
+        item["porcentaje"] = resultado[i]
+        i+=1
+    
+    # ii=1                                          #####AQUI IMPRIME EL ARREGLO CON EL POCENTAJE ACTUALIZADO
+    # for item in muestra:                      
+    #     print(f'[{ii}] : {item}')
+    #     ii += 1
+        
     
     #Despues de tener los registros completos, se pregunta por el departamento por el que se quiere ver la grafica
     dep = str(input('Departamento a analizar: '))
@@ -41,7 +45,7 @@ def busqueda(lista_ordenada):
     r2 = []
     
     #La clasificacion se hace de acuerdo a si tiene maximo 17 o si es mayor de  17
-    #El metodo funciona buscando en una sola cadena de str en que lugar se encuentra los numeros de la edad, para porteriormente convertirlo y comparar
+    #El metodo funciona buscando en una sola cadena de str en que lugar se encuentra los numeros de la edad, para posteriormente convertirlo y comparar
     #por ultimo se clasifica y se guarda en un arreglo el porcentaje de ese registro analizado, fuciona basicamente igual en los dos, solo cambia la comparacion de edad 
     for k in lista_ordenada:
         numero = k[0].find(']')
@@ -85,7 +89,7 @@ def PromedioPorcentajes2(arreglo):
 #Para posteriormente invocar los metodos de matplotlib y graficar 
 
 def grafica_definitiva(arreglo):
-    rangoEdad = ['hasta 17', 'mas 17']
+    rangoEdad = ['Hasta 17', 'Más 17']
     porcentanjes = [PromedioPorcentajes1(arreglo),PromedioPorcentajes2(arreglo)]
     plt.bar(rangoEdad, porcentanjes)
     plt.show()
@@ -93,34 +97,46 @@ def grafica_definitiva(arreglo):
 
 
 
-#basicamente lo mismo que en el main
-cantidad  = 1000
-muestra = generarDatos(cantidad)
+# #basicamente lo mismo que en el main
+# cantidad  = 100
+# muestra = generarDatos(cantidad)
 
-a = muestra
-b = muestra
-
-
-i = 1
-for item in muestra:
-    print(f'[{i}] : {item}')
-i += 1
-ordenado=ordenandoDatosNecesarios(a)
-ordenadoCompleto=ordenado[0]
-ordenadoDesertor=ordenado[1]
+# a = muestra
+# b = muestra
+# #b1=b.pop(["deserción"] !=0)
 
 
-#Aqui calcula el porcentaje de cada estudiante que se graduen de la universidad, (solo están los estudiantes que se graduaron)
-resultado1 = entrenandoMaquinaCompleto(ordenadoCompleto)
 
-#Aqui calcula el porcentaje de cada estudiante que vuelva al colegio, (solo están los estudiantes que desertaron)
-resultado2 = entrenandoMaquinaDesertores(ordenadoDesertor)
-
-#----------------------------------------------------------
+# i = 1
+# for item in b:
+#     print(f'[{i}] : {item}')
+#     i += 1
 
 
-#invocacion de los metodos anteriores
-arreglo_definitivo = busqueda(inginieria_inversa(b, resultado1)) 
-grafica_definitiva(arreglo_definitivo)
 
 
+# b1=[]
+# for item in b:
+#     if item["desercion"]==0:
+#         b1.append(item)
+        
+
+
+
+# ordenado=ordenandoDatosNecesarios(a)
+# ordenadoCompleto=ordenado[0]
+# ordenadoDesertor=ordenado[1]
+
+
+# #Aqui calcula el porcentaje de cada estudiante que se graduen de la universidad, (solo están los estudiantes que se graduaron)
+# resultado1 = entrenandoMaquinaCompleto(ordenadoCompleto)
+
+# #Aqui calcula el porcentaje de cada estudiante que vuelva al colegio, (solo están los estudiantes que desertaron)
+# resultado2 = entrenandoMaquinaDesertores(ordenadoDesertor)
+
+# #----------------------------------------------------------
+
+
+# #invocacion de los metodos anteriores
+# arreglo_definitivo = busqueda(inginieria_inversa(b1, resultado1)) 
+# grafica_definitiva(arreglo_definitivo)
