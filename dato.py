@@ -1,8 +1,8 @@
 from generar import *
 
 class Dato:
-    def __init__(self,muestra):
-        dato = generarDato()
+    def __init__(self,dato):
+        #dato = generarDato()
         self.nombre = dato['nombre']
         self.sexo = dato['sexo']
         self.edad = dato['edad']
