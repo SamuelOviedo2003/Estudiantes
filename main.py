@@ -1,6 +1,4 @@
 
-
-
 from dato import *
 from datos import *
 from generar import *
@@ -32,11 +30,11 @@ def prueba(cantidad):
     #Aqui calcula el porcentaje de cada estudiante que vuelva al colegio, (solo están los estudiantes que desertaron)
     desertorNo0Red=entrenandoMaquinaDesertores(ordenadoDesertor)
     #invocacion de los metodos anteriores
-    arreglo_definitivoDesertores = busqueda(inginieria_inversa(ordenadoDesertor00,desertor0Red)) 
+    arreglo_definitivoDesertores = busqueda(clasificacion(ingenieria_inversa(ordenadoDesertor00,desertor0Red))) 
     grafica_definitiva(arreglo_definitivoDesertores)
 
-    arreglo_definitivoNoDesertores = busqueda(inginieria_inversa(ordenadoDesertorNo00,desertorNo0Red)) 
-    grafica_definitiva(arreglo_definitivoDesertores)
+    #arreglo_definitivoNoDesertores = busqueda(ingenieria_inversa(ordenadoDesertorNo00,desertorNo0Red)) 
+    #grafica_definitiva(arreglo_definitivoDesertores)
 
 
 if __name__ == "__main__":
