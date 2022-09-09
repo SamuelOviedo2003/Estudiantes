@@ -1,36 +1,47 @@
 
-import matplotlib as plt
+import matplotlib.pyplot as plt
 import metodosOrdenar as mo
 from dato import *
 import datos as das
 from generar import *
 from redesNeuronalesActual import *
 import ubicacion_grafica 
-
+import numpy
 # metodo utlizado para conventir los datos y despues organizarlos
 
-def inginieria_inversa(muestra, resultado):
+def ingenieria_inversa(muestra, resultado):
     # Como primera parte se asigana el porcentaje correspondiente a cada estudiante
     # hay que resolver el problema de separar los datos, los registros que se utilizaron para la listacompleta y los registros utilizados para los desertores
     i = 0
-    lista_final = []
-    
-    
     for item in muestra:
-        item["porcentaje"] = resultado[i]
-        i+=1
-    
-    # ii=1                                          #####AQUI IMPRIME EL ARREGLO CON EL POCENTAJE ACTUALIZADO
-    # for item in muestra:                      
-    #     print(f'[{ii}] : {item}')
-    #     ii += 1
         
+        item['porcentaje'] = resultado[i]
+        
+        c =  item['porcentaje']
+        ct = c.tolist()
+        
+        item['porcentaje']  = ct[0]
+        
+        i+=1                                          #####AQUI IMPRIME EL ARREGLO CON EL POCENTAJE ACTUALIZADO
+    #for item in muestra:                      
+    #print (item['porcentaje'])
     
-    #Despues de tener los registros completos, se pregunta por el departamento por el que se quiere ver la grafica
+    return muestra
+
+
+
+def clasificacion(muestra):
+    lista_final = []
+    i  = 1
+    
+        #Despues de tener los registros completos, se pregunta por el departamento por el que se quiere ver la grafica
     dep = str(input('Departamento a analizar: '))
     #Los metodos utilizados aqui se explican en ubicacion_grafica.py
-    muestra0 = ubicacion_grafica.retorno_lista(dep,ubicacion_grafica.agrupacion_dep(muestra, dep)) 
+    muestra0 = ubicacion_grafica.retorno_lista(dep,ubicacion_grafica.agrupacion_dep(muestra)) 
     
+    for item in muestra0:
+        print(f'[{i}] : {item}')
+        i += 1
     #por ultimo se convierte cada dato ya clasificado por el departamento a la clase de dato, para asi poder utlizar el ordenamiento
     for item in muestra0:
         muestra_final = das.anadirDatos(item)
@@ -47,6 +58,7 @@ def busqueda(lista_ordenada):
     #La clasificacion se hace de acuerdo a si tiene maximo 17 o si es mayor de  17
     #El metodo funciona buscando en una sola cadena de str en que lugar se encuentra los numeros de la edad, para posteriormente convertirlo y comparar
     #por ultimo se clasifica y se guarda en un arreglo el porcentaje de ese registro analizado, fuciona basicamente igual en los dos, solo cambia la comparacion de edad 
+    
     for k in lista_ordenada:
         numero = k[0].find(']')
         buscador = k[0][numero-2:numero]
