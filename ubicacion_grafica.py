@@ -1,7 +1,7 @@
 #En esta parte de hace una agrupacion por listas para cada departamento
 #se pasa como argumento la lista con los registros ultilizados
 
-def agrupacion_dep(lista, dep):
+def agrupacion_dep(lista):
     Santander = []
     Boyaca = []
     casanare = [] 
